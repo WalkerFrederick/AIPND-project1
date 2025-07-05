@@ -61,6 +61,17 @@ def print_results(results_dic, results_stats_dic, model,
                               False doesn't print anything(default) (bool) 
     Returns:
            None - simply printing results.
-    """    
+    """
+
+    for resultKey in results_stats_dic.keys():
+        splitResultKey = resultKey.split('_')
+        print(" ".join(splitResultKey[1:]).title() + f': {results_stats_dic[resultKey]}{"%" if splitResultKey[0][0] == "p" else ""}')
+
+    if print_incorrect_dogs or print_incorrect_breed:
+        for key, item in results_dic.items():
+                if print_incorrect_dogs and (item[4] == 1 and item[3] == 0):
+                        print(f'incorrectly identified image: {key}')
+                if print_incorrect_breed and (item[0] not in item[1] and item[3] == 1):
+                        print(f'incorrectly identified breed: {item[0]}')
     None
                 

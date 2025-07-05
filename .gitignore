@@ -104,3 +104,7 @@ ENV/
 .DS_Store
 
 .github/**
+
+# ignore venv stuff
+pyvenv.cfg
+bin
